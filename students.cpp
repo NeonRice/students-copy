@@ -9,17 +9,14 @@
 #include <random>
 
 const int MAX_GRADES = 100;
-bool OLD_WAY = false;
-
 
 class Student
 {   
     private:
         std::string firstName, lastName = "";
-        std::vector<int> grades;
-        int* Cgrades = NULL;
-        int gradeNum = 0;
         double examGrade = 0;
+        std::vector<int> grades;
+
     public:
         Student() {}
         Student(std::string fN, std::string lN):firstName(fN), lastName(lN) {}
@@ -30,9 +27,10 @@ class Student
         std::string getFirstName() const {return firstName;}
         std::string getLastName() const {return lastName;}
 
+
         friend void printStudentInfo(Student s);
 
-        void readStudentName()
+        void readStudentName()  //Read the first and last names with validity checks
         {
             std::string first = "", last = "";
             std::size_t ch;
@@ -46,11 +44,11 @@ class Student
             firstName = first; lastName = last;
         }
 
-        void readStudentGrades()
+        void readStudentGrades()    //Reads students grades with validity checks, input stops when X inputted
         {
             std::cout << "Enter student grades:" << std::endl;
             std::string b;   
-            while(std::cin >> b)
+            while(std::cin >> b && b != "x" && b != "X")
             {
                 int c;
                 try
@@ -66,46 +64,9 @@ class Student
                     continue;
                 grades.push_back(c);
             }
-            gradeNum = grades.size();
         }
 
-        void readStudentGradesOld()
-        {
-            int n = 0, max = 1;
-            int* a = new int[max];
-            std::string b;
-
-            std::cout << "Enter student grades: ";
-            while(std::cin >> b && b != "x" && b != "X")
-            {
-                int c;
-                try
-                {
-                    c = std::stoi(b);
-                }
-                catch(const std::exception& e)
-                {
-                    std::cout << "Invalid argument skipped. Insert only ints" << std::endl;
-                    continue;
-                }
-                if(c <= 0 || c > 10)
-                    continue;
-                a[n] = c;          
-                ++n;
-                ++max;
-                int* temp = new int[max];
-                for(int i = 0; i < n; ++i)
-                {
-                    temp[i] = a[i];
-                }
-                delete [] a;
-                a = temp;
-            }
-            Cgrades = a;
-            gradeNum = max-1;
-        }
-
-        void readExamGrade()
+        void readExamGrade()    //Reads exam grade (the 1st one entered if entered more)
         {
             std::string b;
             int c;
@@ -127,20 +88,20 @@ class Student
             examGrade = c;
         }
 
-        double getAverage()
+        double getAverage() //Returns the average of grades using the given formula
         {
             double gradeSum = 0;
-            for (size_t i = 0; i < gradeNum; i++)
+            for (size_t i = 0; i < grades.size(); i++)
             {
                 gradeSum += grades[i];
             }
-            return (double) (gradeSum / gradeNum) * 0.4 + 0.6 * (double) examGrade;
+            return (double) (gradeSum / grades.size()) * 0.4 + 0.6 * (double) examGrade;
         }
 
-        double getMedian()
+        double getMedian()  //Return the median of grades
         {
             std::sort(grades.begin(), grades.end());
-            if (grades.size() % 2) //Tikrinam ar lyginis skaicius elementu ar ne
+            if (grades.size() % 2)
             {
                 return ((double)grades[grades.size() / 2] + grades[(grades.size() / 2) - 1]) / 2;
             }
@@ -149,55 +110,20 @@ class Student
                 return grades[grades.size() / 2];
             }
         }
-
-        double getOldAverage()
-        {
-            double gradeSum = 0;
-            for (size_t i = 0; i < gradeNum; i++)
-            {
-                gradeSum += Cgrades[i];
-            }
-            return (double) (gradeSum / gradeNum) * 0.4 + 0.6 * (double) examGrade;
-        }
-
-        double getOldMedian()
-        {
-            std::sort(Cgrades, Cgrades + gradeNum);
-            if (gradeNum % 2 == 0) //Tikrinam ar lyginis skaicius elementu ar ne
-            {
-                return ((double)Cgrades[gradeNum / 2] + Cgrades[(gradeNum / 2) - 1]) / 2;
-            }
-            else
-            {
-                return Cgrades[gradeNum / 2];
-            }
-        }
-
 };
 
-void printStudentInfoOld(std::vector<Student> s)
+void printStudentInfo(std::vector<Student> s)   //Trial of formatted output, currently not working completely correctly 
 {
     std::cout << "Last Name" << std::setw(16) << "First Name" << std::setw(12) << "Average" << std::setw(12) << "Median" << std::endl;
     std::cout << "----------------------------------------------------------------" << std::endl;
     for (size_t i = 0; i < s.size(); i++)
     {
         std::cout << s[i].getLastName() << std::setw(12) << s[i].getFirstName() << std::setw(12) 
-        << s[i].getOldAverage() << std::setw(12) << s[i].getOldMedian() << std::endl;
+        << std::setprecision(3) << s[i].getAverage() << std::setw(12) << s[i].getMedian() << std::endl;
     }
 }
 
-void printStudentInfo(std::vector<Student> s)
-{
-    std::cout << "Last Name" << std::setw(16) << "First Name" << std::setw(12) << "Average" << std::setw(12) << "Median" << std::endl;
-    std::cout << "----------------------------------------------------------------" << std::endl;
-    for (size_t i = 0; i < s.size(); i++)
-    {
-        std::cout << s[i].getLastName() << std::setw(12) << s[i].getFirstName() << std::setw(12) 
-        << s[i].getAverage() << std::setw(12) << s[i].getMedian() << std::endl;
-    }
-}
-
-std::vector<Student> readStudents()
+std::vector<Student> readStudents() //Basically all the start-input logic is handled in this function
 {
     int studNum = 0;
     std::vector<Student> students;
@@ -221,7 +147,6 @@ std::vector<Student> readStudents()
         std::cin >> choice;
         if(choice == 'Y' || choice == 'y')
         {
-            OLD_WAY = false;
             for (size_t i = 0; i < studNum; i++)
             {
                 std::vector<int> grades;
@@ -236,12 +161,11 @@ std::vector<Student> readStudents()
             break;
         }
         else if(choice == 'N' || choice == 'n'){
-            OLD_WAY = true;
             for (size_t i = 0; i < studNum; i++)
             {
                 Student s;
                 s.readStudentName();
-                s.readStudentGradesOld();
+                s.readStudentGrades();
                 s.readExamGrade();
                 students.push_back(s);
             }
@@ -262,8 +186,6 @@ int main()
 {
     Student s;
     std::vector<Student> students = readStudents();
-    if(!OLD_WAY)
-        printStudentInfo(students);
-    else
-        printStudentInfoOld(students);
+    Student a = students[0];
+    printStudentInfo(students);
 }
