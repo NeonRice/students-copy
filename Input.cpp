@@ -58,9 +58,9 @@ std::vector<Student> readStudents() //Basically all the start-input logic is han
     return students;
 }
 
-bool selectInputMode()
+bool yesOrNo(const std::string& instruction)
 {
-    std::cout << "Read from file students.txt? (Y OR N): " << std::endl;
+    std::cout << instruction << std::endl;
     char choice;
     while(1){
         std::cin >> choice;
@@ -76,43 +76,48 @@ bool selectInputMode()
     }
 }
 
-bool compareByLastName(const Student &a, const Student &b)
+inline bool compareByLastName(const Student &a, const Student &b)
 {
     return a.getLastName() < b.getLastName();
 }
 
 std::vector<Student> readStudentsFromFile()
 {
-    std::ifstream s("students1.txt");     //FILE_NAME - const string defined in Input.h
+    std::ifstream s("students.txt");     //FILE_NAME - const string defined in Input.h
     std::string str, dummy;
     std::vector<Student> students;
     int elementCnt = 0;
 
     if(s)
-        std::cout << "Valid stream " << std::endl;
-
-    std::getline(s, str);           //Reading first line (dummy line)
-    std::istringstream sstr(str);
-    while(sstr >> dummy)
-        ++elementCnt;
-
-    std::string firstName, lastName;        //The actual reading of file
-    while(s >> firstName >> lastName)
     {
-        std::vector<int> grades;
-        for(int i = 0; i < elementCnt - 2; ++i) //Loop through all non-name entities
+        std::getline(s, str);           //Reading first line (dummy line)
+        std::istringstream sstr(str);
+        while(sstr >> dummy)
+            ++elementCnt;
+
+        std::string firstName, lastName;        //The actual reading of file
+        while(s >> firstName >> lastName)
         {
-            int grade = 0;
-            s >> grade;
-            grades.push_back(grade);
+            std::vector<int> grades;
+            for(int i = 0; i < elementCnt - 2; ++i) //Loop through all non-name entities
+            {
+                int grade = 0;
+                s >> grade;
+                grades.push_back(grade);
+            }
+            int examGrade = grades.back();  //Reading exam grade and removing it from regular grades.
+            grades.pop_back();
+
+            students.push_back(Student(firstName, lastName, grades, examGrade));
         }
-        int examGrade = grades.back();  //Reading exam grade and removing it from regular grades.
-        grades.pop_back();
 
-        students.push_back(Student(firstName, lastName, grades, examGrade));
+        std::sort(students.begin(), students.end(), compareByLastName);     //Sorting students by their last name
     }
-
-    std::sort(students.begin(), students.end(), compareByLastName);
-
+    else
+    {
+        std::cout << "The file students.txt wasn't found... Redirecting to input by hand" << std::endl;     //If the file students.txt is not found then the user is redirected to the standard input method.
+        students = readStudents();
+    }
+    
     return students;
 }
