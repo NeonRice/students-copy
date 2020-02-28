@@ -43,7 +43,7 @@ void Student::readStudentGrades() //Reads students grades with validity checks, 
             std::cout << "Invalid argument skipped. Insert only ints" << std::endl;
             continue;
         }
-        if (c < 0 || c > 10)
+        if (c < 0 || c > 10) //Skipping invalid grades
             continue;
         grades.push_back(c);
     }
@@ -95,26 +95,12 @@ double Student::getMedian() //Return the median of grades
 }
 
 //Friend function
-void printStudentInfo(std::vector<Student> s) //Trial of formatted output, currently not working completely correctly
+void printStudentInfo(std::vector<Student> s, std::ostream &out) //Formatted output to console
 {
-    std::cout << std::left << std::setw(25) << "Last Name" << std::left << std::setw(25) << "First Name" << std::right << std::setw(25) << "Average" << std::right << std::setw(12) << "Median" << std::endl;
-    std::cout << "---------------------------------------------------------------------------------------------------------------" << std::endl;
-    for (size_t i = 0; i < s.size(); i++)
-    {
-        std::cout << std::left << std::setw(25) << s[i].getLastName() << std::left << std::setw(25) << s[i].getFirstName() << std::right << std::setw(25) <<
-                 std::fixed << std::setprecision(2) << s[i].getAverage() << std::right << std::setw(12) << s[i].getMedian() << std::endl;
-    }
-}
-
-void printStudentInfoToFile(std::vector<Student> s)
-{
-    std::ofstream out(OUT_FILE_NAME);
-
     out << std::left << std::setw(25) << "Last Name" << std::left << std::setw(25) << "First Name" << std::right << std::setw(25) << "Average" << std::right << std::setw(12) << "Median" << std::endl;
     out << "---------------------------------------------------------------------------------------------------------------" << std::endl;
     for (size_t i = 0; i < s.size(); i++)
     {
-        out << std::left << std::setw(25) << s[i].getLastName() << std::left << std::setw(25) << s[i].getFirstName() << std::right << std::setw(25) <<
-                 std::fixed << std::setprecision(2) << s[i].getAverage() << std::right << std::setw(12) << s[i].getMedian() << std::endl;
+        out << std::left << std::setw(25) << s[i].getLastName() << std::left << std::setw(25) << s[i].getFirstName() << std::right << std::setw(25) << std::fixed << std::setprecision(2) << s[i].getAverage() << std::right << std::setw(12) << s[i].getMedian() << std::endl;
     }
 }
