@@ -30,6 +30,8 @@ Prints given student info such as first name, last name, average of grades and a
 
 
 ## Releases
- <br />[v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
+ [v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
  <br />[v0.2](https://github.com/NeonRice/students/releases/tag/v0.2)
+ <br />[v0.3](https://github.com/NeonRice/students/releases/tag/v0.3)
+
   
