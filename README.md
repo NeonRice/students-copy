@@ -31,8 +31,8 @@ Prints given student info such as first name, last name, average of grades and a
 <b>If you chose to input the information yourself, then follow this usage path</b>
 1. Following the guideline enter how many students you want to input.
 2. You choose if you want the grades generated randomly (Y\N)
-2.1 If you chose the grades to be generated randomly, you will input the student names.
-2.2 If you chose the grades to NOT be generated randomly, you will input the student names, following their grades and exam grade.
+<br />2.1 If you chose the grades to be generated randomly, you will input the student names.
+<br />2.2 If you chose the grades to NOT be generated randomly, you will input the student names, following their grades and exam grade.
 3. Choose if you want to output to file or terminal.
 
 
