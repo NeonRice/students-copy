@@ -4,13 +4,20 @@ Prints given student info such as first name, last name, average of grades and a
 ## Instructions
 
 1. Download the binary file provided in the latest release.
-2. Run the file in the terminal (where the file is downloaded) using ./Students
+2. Run the file in the terminal of our choice  (where the file is downloaded) using "./Students"
 
 ## Instructions 2
 
 1. Download the source.
-2. Compile the project using the MAKEFILE provided. (Using make in terminal in the source location).
-3. Run the compiled file in the terminal (where the file is downloaded) using ./Students
+2. Compile the project using the MAKEFILE provided. (Using "make" in terminal in the source location).
+3. Run the compiled file in the terminal of your choice (where the file is downloaded) using "./Students"
+
+## Test running instructions
+
+1. Download the source if you haven't already.
+2. Compile the project using the MAKEFILE provided. (Using "make test")
+3. Run the compiled binary file in the terminal of your choice using "./test"
+4. OPTIONAL If you want to remove the created text files run "make testclean"
 
 ## Outdated Instructions (For Version v0.1)
 
@@ -33,5 +40,6 @@ Prints given student info such as first name, last name, average of grades and a
  [v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
  <br />[v0.2](https://github.com/NeonRice/students/releases/tag/v0.2)
  <br />[v0.3](https://github.com/NeonRice/students/releases/tag/v0.3)
+ <br />[v0.4](https://github.com/NeonRice/students/releases/tag/v0.4)
 
   
