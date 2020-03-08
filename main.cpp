@@ -21,4 +21,6 @@ int main()
     }
     else
         printStudentInfo(students, std::cout);
+
+    return 0;
 }
