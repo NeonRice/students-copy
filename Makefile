@@ -2,7 +2,7 @@ CXX = g++
 FILENAME = Utility
 CXXFLAGS = -pedantic -std=c++17
 EXCLUDE_FILES = main.cpp
-EXCLUDE_TEST_FILES = StudentGen.cpp
+EXCLUDE_TEST_FILES = test.cpp
 src = $(wildcard *.cpp)
 obj = $(src:.cpp=.o)
 external = $(subst $(EXCLUDE_FILES),, ${src})
