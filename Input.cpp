@@ -1,4 +1,5 @@
 #include "headers/Input.h"
+#include <chrono>
 
 //Utility Functions
 
@@ -78,9 +79,9 @@ std::vector<Student> readStudents() //Basically all the start-input logic is han
     return students;
 }
 
-std::vector<Student> readStudentsFromFile()
+std::vector<Student> readStudentsFromFile(std::string fileName)
 {
-    std::ifstream s("students.txt"); //FILE_NAME - const string defined in Input.h
+    std::ifstream s(fileName); //FILE_NAME - const string defined in Input.h
     std::string str, dummy;
     std::vector<Student> students;
     int elementCnt = 0;
@@ -109,7 +110,6 @@ std::vector<Student> readStudentsFromFile()
 
                 students.push_back(Student(firstName, lastName, grades, examGrade));
             }
-
             std::sort(students.begin(), students.end(), compareByLastName); //Sorting students by their last name
             s.close();                                                      //Closing the stream after the operations
         }
