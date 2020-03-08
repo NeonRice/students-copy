@@ -72,7 +72,7 @@ int main()
         std::cout << "Elapsed time for generation " << elapsed_seconds.count() << " s" << std::endl;
 
         start = std::chrono::system_clock::now();
-        students = readStudentsFromFile("students" + std::to_string(GENERATION_AMOUNT) + ".txt");
+        students = readStudentsFromFile("students" + std::to_string(GENERATION_AMOUNT) + ".txt", false);
         end = std::chrono::system_clock::now();
         elapsed_seconds = end-start;
         std::cout << "Elapsed time for reading " << elapsed_seconds.count() << " s" << std::endl;

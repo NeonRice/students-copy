@@ -79,7 +79,7 @@ std::vector<Student> readStudents() //Basically all the start-input logic is han
     return students;
 }
 
-std::vector<Student> readStudentsFromFile(std::string fileName)
+std::vector<Student> readStudentsFromFile(std::string fileName, bool sortByName)
 {
     std::ifstream s(fileName); //FILE_NAME - const string defined in Input.h
     std::string str, dummy;
@@ -110,7 +110,8 @@ std::vector<Student> readStudentsFromFile(std::string fileName)
 
                 students.push_back(Student(firstName, lastName, grades, examGrade));
             }
-            std::sort(students.begin(), students.end(), compareByLastName); //Sorting students by their last name
+            if(sortByName)
+                std::sort(students.begin(), students.end(), compareByLastName); //Sorting students by their last name
             s.close();                                                      //Closing the stream after the operations
         }
         else
