@@ -97,10 +97,10 @@ double Student::getMedian() //Return the median of grades
 //Friend function
 void printStudentInfo(std::vector<Student> s, std::ostream &out) //Formatted output to console
 {
-    out << std::left << std::setw(25) << "Last Name" << std::left << std::setw(25) << "First Name" << std::right << std::setw(25) << "Average" << std::right << std::setw(12) << "Median" << std::endl;
+    out << std::left << std::setw(20) << "Last Name" << std::left << std::setw(20) << "First Name" << std::left << std::setw(8) << "Average" <<  "Median" << std::endl;
     out << "---------------------------------------------------------------------------------------------------------------" << std::endl;
     for (size_t i = 0; i < s.size(); i++)
     {
-        out << std::left << std::setw(25) << s[i].getLastName() << std::left << std::setw(25) << s[i].getFirstName() << std::right << std::setw(25) << std::fixed << std::setprecision(2) << s[i].getAverage() << std::right << std::setw(12) << s[i].getMedian() << std::endl;
+        out << std::left << std::setw(20) << s[i].getLastName() << std::left << std::setw(20) << s[i].getFirstName() <<  std::left << std::setw(8) << std::fixed << std::setprecision(2) << s[i].getAverage() << s[i].getMedian() << std::endl;
     }
 }
