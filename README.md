@@ -22,8 +22,8 @@ Prints given student info such as first name, last name, average of grades and a
 ## Test results using different STL container types
 <br />These were done on a system configured with 8GB of RAM and a modern i5 Intel processor. The data was written into a regular user HDD.
 <br />One more important thing to note is that the tests were done on 15 grades and the data seperating time includes sorting the data first, which takes way more time than the seperating process itself.
-![Data seperating time with sorting](https://imgur.com/Adx5wrG)
-![Data reading time](https://imgur.com/nRWJRZO)
+![](https://i.imgur.com/Adx5wrG.png)
+![](https://i.imgur.com/nRWJRZO.png)
 
 ## Outdated Instructions (For Version v0.1)
 
