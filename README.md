@@ -16,8 +16,14 @@ Prints given student info such as first name, last name, average of grades and a
 
 1. Download the source if you haven't already.
 2. Compile the project using the MAKEFILE provided. (Using "make test")
-3. Run the compiled binary file in the terminal of your choice using "./test"
+3. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List or a for all)
 4. OPTIONAL If you want to remove the created text files run "make testclean"
+
+## Test results using different STL container types
+<br />These were done on a system configured with 8GB of RAM and a modern i5 Intel processor. The data was written into a regular user HDD.
+<br />One more important thing to note is that the tests were done on 15 grades and the data seperating time includes sorting the data first, which takes way more time than the seperating process itself.
+![Data seperating time with sorting](https://imgur.com/Adx5wrG)
+![Data reading time](https://imgur.com/nRWJRZO)
 
 ## Outdated Instructions (For Version v0.1)
 
@@ -41,5 +47,6 @@ Prints given student info such as first name, last name, average of grades and a
  <br />[v0.2](https://github.com/NeonRice/students/releases/tag/v0.2)
  <br />[v0.3](https://github.com/NeonRice/students/releases/tag/v0.3)
  <br />[v0.4](https://github.com/NeonRice/students/releases/tag/v0.4)
+ <br />[v0.5](https://github.com/NeonRice/students/releases/tag/v0.5)
 
   
