@@ -23,7 +23,7 @@ public:
     std::string getFirstName() const;
     std::string getLastName() const;
 
-    friend void printStudentInfo(std::vector<Student> s, std::ostream &out);
+    //friend void printStudentInfo(std::vector<Student> s, std::ostream &out); Don't know for now how to make it into a friend template func
 
     void readStudentName(); //Read the first and last names with validity checks
 
@@ -36,6 +36,4 @@ public:
     double getMedian(); //Return the median of grades
 };
 
-void printStudentInfo(std::vector<Student> s, std::ostream &out);
-
-void printStudentInfoToFile(std::vector<Student> s);
+//void printStudentInfo(std::vector<Student> s, std::ostream &out);
