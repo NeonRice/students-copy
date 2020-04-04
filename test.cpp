@@ -8,28 +8,7 @@
 const int GENERATION_START = 1000;
 const int GENERATION_OFFSET = 10;
 const int FILE_AMOUNT = 5;
-
-//Test file generation function
-
-void generateTestFile(int GENERATION_AMOUNT)
-{
-    int gradeCount = 15;
-
-    //Generating labels
-    std::ofstream file("students" + std::to_string(GENERATION_AMOUNT) + ".txt");
-    file << std::left << std::setw(18) << "Vardas" << std::setw(18) << "Pavarde";
-    for (int i = 1; i <= gradeCount; ++i)
-        file << std::left << "ND" << std::setw(10) << i;
-    file << "Egz." << std::endl;
-
-    for (int i = 1; i <= GENERATION_AMOUNT; ++i)
-    {
-        file << std::left << "Vardas" << std::setw(12) << i << "Pavarde" << std::setw(12) << i;
-        for (int i = 0; i <= gradeCount; ++i)
-            file << std::setw(12) << rand() % 10 + 1;
-        file << std::endl;
-    }
-}
+const int GRADE_COUNT = 15;
 
 // Comparison inline functions
 
@@ -61,14 +40,14 @@ void seperateSortedContainer(Container &students, Container &weakStudents) // Ve
 }
 
 template <typename Container>
-void seperateContainer2(Container &students, Container &weakStudents, Container &newStudents)
+void seperateContainer1(Container &students, Container &weakStudents, Container &newStudents)
 {
     std::remove_copy_if(students.begin(), students.end(), std::back_inserter(weakStudents), IsWeakStudent);
     std::remove_copy_if(students.begin(), students.end(), std::back_inserter(newStudents), IsStrongStudent);
 }
 
 template <typename Container>
-void seperateContainer3(Container &students, Container &weakStudents, Container &goodStudents) //Faster than seperateContainer2
+void seperateContainer2(Container &students, Container &weakStudents, Container &goodStudents) //Faster than seperateContainer2
 {
     auto it = students.begin();
     for (; it != students.end(); ++it)
@@ -102,7 +81,7 @@ void testVector(bool sort)
 
         auto programStart = std::chrono::system_clock::now();
         auto start = std::chrono::system_clock::now();
-        generateTestFile(GENERATION_AMOUNT);
+        generateTestFile(GENERATION_AMOUNT, GRADE_COUNT);
         auto end = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed_seconds = end - start;
         std::cout << "Elapsed time for generation " << elapsed_seconds.count() << " s" << std::endl;
@@ -115,7 +94,7 @@ void testVector(bool sort)
         if (!sort)
         {
             start = std::chrono::system_clock::now();
-            seperateContainer2(students, weakStudents, goodStudents);
+            seperateContainer1(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating using 1st method " << elapsed_seconds.count() << " s" << std::endl;
@@ -124,7 +103,7 @@ void testVector(bool sort)
             goodStudents.clear();
 
             start = std::chrono::system_clock::now();
-            seperateContainer3(students, weakStudents, goodStudents);
+            seperateContainer2(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating using 2nd method " << elapsed_seconds.count() << " s" << std::endl;
@@ -185,7 +164,7 @@ void testDeque(bool sort)
 
         auto programStart = std::chrono::system_clock::now();
         auto start = std::chrono::system_clock::now();
-        generateTestFile(GENERATION_AMOUNT);
+        generateTestFile(GENERATION_AMOUNT, GRADE_COUNT);
         auto end = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed_seconds = end - start;
         std::cout << "Elapsed time for generation " << elapsed_seconds.count() << " s" << std::endl;
@@ -213,7 +192,7 @@ void testDeque(bool sort)
         else if (!sort)
         {
             start = std::chrono::system_clock::now();
-            seperateContainer2(students, weakStudents, goodStudents);
+            seperateContainer1(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating deque using 1st method " << elapsed_seconds.count() << " s" << std::endl;
@@ -222,7 +201,7 @@ void testDeque(bool sort)
             goodStudents.clear();
 
             start = std::chrono::system_clock::now();
-            seperateContainer3(students, weakStudents, goodStudents);
+            seperateContainer2(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating deque using 2nd method " << elapsed_seconds.count() << " s" << std::endl;
@@ -269,7 +248,7 @@ void testList(bool sort)
 
         auto programStart = std::chrono::system_clock::now();
         auto start = std::chrono::system_clock::now();
-        generateTestFile(GENERATION_AMOUNT);
+        generateTestFile(GENERATION_AMOUNT, GRADE_COUNT);
         auto end = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed_seconds = end - start;
         std::cout << "Elapsed time for list generation " << elapsed_seconds.count() << " s" << std::endl;
@@ -297,7 +276,7 @@ void testList(bool sort)
         else if(!sort)
         {
             start = std::chrono::system_clock::now();
-            seperateContainer2(students, weakStudents, goodStudents);
+            seperateContainer1(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating lists using 1st method " << elapsed_seconds.count() << " s" << std::endl;
@@ -306,7 +285,7 @@ void testList(bool sort)
             goodStudents.clear();
 
             start = std::chrono::system_clock::now();
-            seperateContainer3(students, weakStudents, goodStudents);
+            seperateContainer2(students, weakStudents, goodStudents);
             end = std::chrono::system_clock::now();
             elapsed_seconds = end - start;
             std::cout << "Elapsed time for seperating lists using 2nd method " << elapsed_seconds.count() << " s" << std::endl;

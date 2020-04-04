@@ -35,7 +35,7 @@ Prints given student info such as first name, last name, average of grades and a
 ![](https://i.imgur.com/sY2JRvV.png)
 ![](https://i.imgur.com/cB5JC5w.png)
 ![](https://i.imgur.com/v34FGhs.png)
-<br />From the testing results lists and deque seem to be the less affected by the removal of a large number of elements than vectors, while lists are affected the least of all three.
+<br />From the testing results list and deque containers seem to be less affected by the removal of elements than vectors, while lists are affected the least of all three.
 <br />In conclusion the differences in time of seperation are insignificant compared to the amount of memory that we save by using the 3rd method. If we were to use the 2nd method, vector is the clear winner, however using the 3rd method, the seperation time equals out with deque's, therefore the choice should be made between vector or deque for the seperation job solely.
 
 ## Outdated Instructions (For Version v0.1)

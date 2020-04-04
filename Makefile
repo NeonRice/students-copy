@@ -1,5 +1,5 @@
 CXX = g++
-FILENAME = Utility
+FILENAME = Students
 CXXFLAGS = -pedantic -std=c++17
 EXCLUDE_FILES = main.cpp
 EXCLUDE_TEST_FILES = test.cpp
@@ -18,7 +18,7 @@ extern: $(external)
 	$(CXX) -c $^ $(CXXFLAGS)
 .PHONY: clean
 clean:
-	rm -f $(obj) $(FILENAME)
+	rm -f $(obj) $(FILENAME) *.txt
 test: $(external)
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 testclean:

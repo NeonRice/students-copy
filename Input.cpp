@@ -10,9 +10,9 @@ bool yesOrNo(const std::string &instruction)
     while (1)
     {
         std::cin >> choice;
-        if (choice == 'Y' || choice == 'y')
+        if (toupper(choice) == 'Y')
             return true;
-        else if (choice == 'N' || choice == 'n')
+        else if (toupper(choice) == 'N')
             return false;
         else
         {

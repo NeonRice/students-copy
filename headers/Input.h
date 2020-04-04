@@ -121,7 +121,7 @@ Container readStudentsFromFile(std::string fileName = "students.txt", bool sortB
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';
-        //students = readStudents<Container>();
+        students = readStudents<Container>();
     }
 
     return students;
