@@ -82,6 +82,6 @@ Prints given student info such as first name, last name, average of grades and a
  
  <br />**[v0.5]** Deque and List added as container options to the testing program.
  
- <br />**[v1.0]** Added 3 additional container seperation methods<
+ <br />**[v1.0]** Added 3 additional container seperation methods.
 
   
