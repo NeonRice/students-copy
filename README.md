@@ -57,18 +57,28 @@ Prints given student info such as first name, last name, average of grades and a
 
 ## Releases
  [v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
+ 
  <br />[v0.2](https://github.com/NeonRice/students/releases/tag/v0.2)
+ 
  <br />[v0.3](https://github.com/NeonRice/students/releases/tag/v0.3)
+ 
  <br />[v0.4](https://github.com/NeonRice/students/releases/tag/v0.4)
+ 
  <br />[v0.5](https://github.com/NeonRice/students/releases/tag/v0.5)
+ 
  <br />[v1.0](https://github.com/NeonRice/students/releases/tag/v1.0)
 
  ## Release Overview
- <br />v0.1 Enter student info and grades, and get the overview of results displayed on the screen
- <br />v0.2 Added input from file and output sorting functionality.
- <br />v0.3 Added exception handling
- <br />v0.4 Test program added to measure vector container efficiency doing manipulative tasks with data.
- <br />v0.5 Deque and List added as container options to the testing program.
- <br />v1.0 Added 3 additional container seperation methods
+ <br />**[v0.1]** Enter student info and grades, and get the overview of results displayed on the screen
+ 
+ <br />**[v0.2]** Added input from file and output sorting functionality.
+ 
+ <br />**[v0.3]** Added exception handling
+ 
+ <br />**[v0.4]** Test program added to measure vector container efficiency doing manipulative tasks with data.
+ 
+ <br />**[v0.5]** Deque and List added as container options to the testing program.
+ 
+ <br />**[v1.0]** Added 3 additional container seperation methods<
 
   
