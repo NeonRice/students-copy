@@ -74,7 +74,7 @@ Prints given student info such as first name, last name, average of grades and a
  ## Release Overview
  <br />**[v0.1]** Enter student info and grades, and get the overview of results displayed on the screen
  
- <br />**[v0.2]** Added input from file and output sorting functionality.
+ <br />**[v0.2]** Added input from file and output sorting functionality. Program compilation is now done through a MAKEFILE.
  
  <br />**[v0.3]** Added exception handling
  
