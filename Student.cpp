@@ -96,13 +96,13 @@ double Student::getMedian() //Return the median of grades
     }
 }
 
-//Friend function
-void printStudentInfo(std::vector<Student> s, std::ostream &out) //Formatted output to console
-{
-    out << std::left << std::setw(20) << "Last Name" << std::left << std::setw(20) << "First Name" << std::left << std::setw(8) << "Average" <<  "Median" << std::endl;
-    out << "---------------------------------------------------------------------------------------------------------------" << std::endl;
-    for (size_t i = 0; i < s.size(); i++)
-    {
-        out << std::left << std::setw(20) << s[i].getLastName() << std::left << std::setw(20) << s[i].getFirstName() <<  std::left << std::setw(8) << std::fixed << std::setprecision(2) << s[i].getAverage() << s[i].getMedian() << std::endl;
-    }
-}
+//Friend function (Dont know how to make it into a friend template function)
+// void printStudentInfo(std::vector<Student> s, std::ostream &out) //Formatted output to console
+// {
+//     out << std::left << std::setw(20) << "Last Name" << std::left << std::setw(20) << "First Name" << std::left << std::setw(8) << "Average" <<  "Median" << std::endl;
+//     out << "---------------------------------------------------------------------------------------------------------------" << std::endl;
+//     for (size_t i = 0; i < s.size(); i++)
+//     {
+//         out << std::left << std::setw(20) << s[i].getLastName() << std::left << std::setw(20) << s[i].getFirstName() <<  std::left << std::setw(8) << std::fixed << std::setprecision(2) << s[i].getAverage() << s[i].getMedian() << std::endl;
+//     }
+// }

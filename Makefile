@@ -19,7 +19,7 @@ extern: $(external)
 	$(CXX) -c $^ $(CXXFLAGS)
 .PHONY: clean
 clean:
-	rm -f $(obj) $(FILENAME)
+	rm -f $(obj) $(FILENAME) *.txt
 test: $(external)
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 testclean:
