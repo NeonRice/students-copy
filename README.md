@@ -62,6 +62,12 @@ Prints given student info such as first name, last name, average of grades and a
     2. If you chose the grades to NOT be generated randomly, you will input the student names, following their grades and exam grade.
 3. Choose if you want to output to file or terminal.
 
+## Optimization flags
+The experiment was done to check which of the three main GCC optimisation flags "O1, O2, O3" decreases the test case execution time the most. In theory O3 should be the quickest execution-wise with increased memory usage and compile time.
+
+The container used for the test was vector.
+
+
 
 ## Releases
  [v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
