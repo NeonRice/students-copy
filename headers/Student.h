@@ -14,11 +14,13 @@ private:
     std::vector<int> grades;
 
 public:
-    Student();
-    Student(std::string fN, std::string lN);
-    Student(double eX, std::vector<int> g);
-    Student(std::string fN, std::string lN, std::vector<int> g);
-    Student(std::string fN, std::string lN, std::vector<int> g, int exG);
+    explicit Student();
+    explicit Student(std::string fN, std::string lN);
+    explicit Student(double eX, std::vector<int> g);
+    explicit Student(std::string fN, std::string lN, std::vector<int> g);
+    explicit Student(std::string fN, std::string lN, std::vector<int> g, int exG);
+
+    ~Student();
 
     std::string getFirstName() const;
     std::string getLastName() const;

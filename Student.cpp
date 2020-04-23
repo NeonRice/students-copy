@@ -9,6 +9,8 @@ Student::Student(std::string fN, std::string lN, std::vector<int> g)
 Student::Student(std::string fN, std::string lN, std::vector<int> g, int exG)
     : firstName(fN), lastName(lN), grades(g), examGrade(exG) {}
 
+Student::~Student() {}
+
 std::string Student::getFirstName() const { return firstName; }
 std::string Student::getLastName() const { return lastName; }
 

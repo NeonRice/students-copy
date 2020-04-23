@@ -1,6 +1,7 @@
 CXX = g++
-FILENAME = Utility
-CXXFLAGS = -pedantic -std=c++17
+FILENAME = Students
+TEST_FILENAME = test
+CXXFLAGS = -pedantic -std=c++17 -O3
 EXCLUDE_FILES = main.cpp
 EXCLUDE_TEST_FILES = test.cpp
 src = $(wildcard *.cpp)
@@ -22,4 +23,4 @@ clean:
 test: $(external)
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 testclean:
-	rm -f *.txt test
+	rm -f *.txt $(TEST_FILENAME)

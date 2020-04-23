@@ -32,7 +32,7 @@ inline bool compareByLastName(const Student &a, const Student &b)
 
 std::vector<Student> readStudents() //Basically all the start-input logic is handled in this function
 {
-    int studNum = 0;
+    unsigned studNum = 0;
     std::vector<Student> students;
     std::cout << "How many students do you want to input?: ";
     std::cin >> studNum;
