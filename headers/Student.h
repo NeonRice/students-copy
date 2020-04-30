@@ -10,8 +10,8 @@ class Student
 {
 private:
     std::string firstName, lastName;
-    int examGrade;
-    std::vector<int> grades;
+    int examGrade = 0;
+    std::vector<int> grades = {};
 
 public:
     explicit Student();
@@ -20,7 +20,18 @@ public:
     explicit Student(std::string fN, std::string lN, std::vector<int> g);
     explicit Student(std::string fN, std::string lN, std::vector<int> g, int exG);
 
-    ~Student();
+    ~Student() = default;
+
+    Student(const Student &);
+
+    Student& operator=(const Student &);
+    Student operator+(const Student &) const;
+    Student& operator+=(const Student &);
+
+    bool operator==(const Student&) const;
+
+    friend std::ostream& operator<<(std::ostream &, const Student &student);
+    friend std::istream& operator>>(std::istream &, Student &student);
 
     std::string getFirstName() const;
     std::string getLastName() const;
@@ -33,9 +44,12 @@ public:
 
     void readExamGrade(); //Reads exam grade (the 1st one entered if entered more)
 
-    double getAverage(); //Returns the average of grades using the given formula
+    double getAverage() const; //Returns the average of grades using the given formula
 
-    double getMedian(); //Return the median of grades
+    double getMedian() const; //Return the median of grades
+
+    const std::vector<int>& getGrades() const;
 };
 
 //void printStudentInfo(std::vector<Student> s, std::ostream &out);
+
