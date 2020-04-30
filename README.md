@@ -62,6 +62,15 @@ Prints given student info such as first name, last name, average of grades and a
     2. If you chose the grades to NOT be generated randomly, you will input the student names, following their grades and exam grade.
 3. Choose if you want to output to file or terminal.
 
+## Optimization flags
+The experiment was done to check which of the three main GCC optimisation flags "O1, O2, O3" decreases the test case execution time the most. In theory O3 should be the quickest execution-wise with increased memory usage and compile time.
+
+The container used for the test was vector.
+![](https://i.imgur.com/JDUOsV7.png)
+![](https://i.imgur.com/fVumnoU.png)
+
+The smallest file size was with O1 and O2 flags, O3 larger by a small margin, while O0 file size was almost double the size of O1 and O2. The execution time differences between the three optimization flags were of seconds, therefore O2 is probably the best choice based on it's file size and execution time.
+
 
 ## Releases
  [v0.1](https://github.com/NeonRice/students/releases/tag/v0.1) 
