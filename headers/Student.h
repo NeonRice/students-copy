@@ -32,16 +32,17 @@ public:
     Student& operator+=(const Student &);
 
     bool operator==(const Student&) const;
-    bool operator>=(const Student&) const;
-    bool operator<=(const Student&) const;
-    bool operator>(const Student&) const;
-    bool operator<(const Student&) const;
+    inline bool operator>=(const Student &other) const { return this->getAverage() >= other.getAverage(); }
+    inline bool operator<=(const Student &other) const { return this->getAverage() <= other.getAverage(); }
+    inline bool operator>(const Student &other) const { return this->getAverage() > other.getAverage(); }
+    inline bool operator<(const Student &other) const { return this->getAverage() < other.getAverage(); }
 
     friend std::ostream& operator<<(std::ostream &, const Student &student);
     friend std::istream& operator>>(std::istream &, Student &student);
 
-    std::string getFirstName() const;
-    std::string getLastName() const;
+    inline std::string getFirstName() const { return firstName; }
+    inline std::string getLastName() const { return lastName; }
+    inline std::string getFullName() const { return firstName + " " + lastName; }
 
     //friend void printStudentInfo(std::vector<Student> s, std::ostream &out); Don't know for now how to make it into a friend template func
 

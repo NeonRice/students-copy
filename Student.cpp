@@ -9,9 +9,6 @@ Student::Student(std::string fN, std::string lN, std::vector<int> g)
 Student::Student(std::string fN, std::string lN, std::vector<int> g, int exG)
     : firstName(fN), lastName(lN), grades(g), examGrade(exG) {}
 
-std::string Student::getFirstName() const { return firstName; }
-std::string Student::getLastName() const { return lastName; }
-
 // Copy constructor
 Student::Student(const Student &other)
 {
@@ -53,37 +50,9 @@ bool Student::operator==(const Student &other) const
     else return false;
 }
 
-inline bool Student::operator>=(const Student &other) const
-{
-    if (this->getAverage() >= other.getAverage())
-        return true;
-    else return false;
-}
-
-inline bool Student::operator<=(const Student &other) const
-{
-    if (this->getAverage() <= other.getAverage())
-        return true;
-    else return false;
-}
-
-inline bool Student::operator>(const Student &other) const
-{
-    if (this->getAverage() > other.getAverage())
-        return true;
-    else return false;
-}
-
-inline bool Student::operator<(const Student &other) const
-{
-    if (this->getAverage() < other.getAverage())
-        return true;
-    else return false;
-}
-
 Student Student::operator+(const Student &other) const
 {
-    if(*this == other)
+    if(this->getFullName() == other.getFullName())
     {
         Student student(*this);
         student.grades.insert(
@@ -91,34 +60,26 @@ Student Student::operator+(const Student &other) const
             other.grades.begin(),
             other.grades.end()
         );
-
+        
         return student;
     }
+    return *this;
 }
 
 Student Student::operator-(const Student &other) const
 {
-    if(*this == other)
+    if(this->getFullName() == other.getFullName())
     {
-        std::vector<int> xvec = this->grades;
-        std::vector<int> yvec = other.grades;
+        std::vector<int> difference;
+        std::vector<int> v1 = this->grades;
+        std::vector<int> v2 = other.grades;
 
-        std::set<std::tuple<int,int> > set;
-        for (std::size_t i = 0; i < xvec.size();) {
-            if (set.emplace(xvec[i], yvec[i]).second) {
-                i++;
-            } else {
-                xvec.erase(xvec.begin() + i);
-                yvec.erase(yvec.begin() + i);
-            }
-        }
-        xvec.insert(
-            xvec.end(),
-            yvec.begin(),
-            yvec.end()
-        );
-        Student("", "", xvec);
+        std::set_difference(v1.begin(), v1.end(), v2.begin(), v2.end(), 
+                            std::inserter(difference, difference.begin()));
+                            
+        return Student("----", "----", difference);
     }
+    return *this;
 }
 
 Student& Student::operator+=(const Student &other)
@@ -210,6 +171,9 @@ std::istream& Student::readExamGrade(std::istream &in) //Reads exam grade (the 1
 
 double Student::getAverage() const //Returns the average of grades using the given formula
 {
+    if (grades.size() == 0)
+        return 0;
+
     double gradeSum = 0;
     for (size_t i = 0; i < grades.size(); i++)
     {
@@ -221,6 +185,9 @@ double Student::getAverage() const //Returns the average of grades using the giv
 double Student::getMedian() const//Return the median of grades
 {
     std::vector<int> grade_copy = grades;
+    if (grades.size() == 0)
+        return 0;
+    
     std::sort(grade_copy.begin(), grade_copy.end());
     if (grade_copy.size() % 2)
     {

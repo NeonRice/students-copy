@@ -326,19 +326,7 @@ void testList(bool sort)
 int main(int argc, char *argv[])
 {
     bool sort = false;
-
-    std::vector<int> grades = {1, 5, 7, 10, 2, 5};
-    Student s1("Zanas", "Kovaliovas", grades), s2 = s1, s3(s1);
-    std::cout << "Name: " << s2 << std::endl;
-    std::cout << "Comparison: " << (s1 == s2) << std::endl;
-
-    s1 += s2;
-
-    for(auto grade : s1.getGrades())
-    {
-        std::cout << grade << " ";
-    }
-
+    
     if (argc == 3)
     {
         if (toupper(*argv[2]) == 'S')
