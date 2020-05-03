@@ -53,6 +53,34 @@ bool Student::operator==(const Student &other) const
     else return false;
 }
 
+inline bool Student::operator>=(const Student &other) const
+{
+    if (this->getAverage() >= other.getAverage())
+        return true;
+    else return false;
+}
+
+inline bool Student::operator<=(const Student &other) const
+{
+    if (this->getAverage() <= other.getAverage())
+        return true;
+    else return false;
+}
+
+inline bool Student::operator>(const Student &other) const
+{
+    if (this->getAverage() > other.getAverage())
+        return true;
+    else return false;
+}
+
+inline bool Student::operator<(const Student &other) const
+{
+    if (this->getAverage() < other.getAverage())
+        return true;
+    else return false;
+}
+
 Student Student::operator+(const Student &other) const
 {
     if(*this == other)
@@ -65,6 +93,31 @@ Student Student::operator+(const Student &other) const
         );
 
         return student;
+    }
+}
+
+Student Student::operator-(const Student &other) const
+{
+    if(*this == other)
+    {
+        std::vector<int> xvec = this->grades;
+        std::vector<int> yvec = other.grades;
+
+        std::set<std::tuple<int,int> > set;
+        for (std::size_t i = 0; i < xvec.size();) {
+            if (set.emplace(xvec[i], yvec[i]).second) {
+                i++;
+            } else {
+                xvec.erase(xvec.begin() + i);
+                yvec.erase(yvec.begin() + i);
+            }
+        }
+        xvec.insert(
+            xvec.end(),
+            yvec.begin(),
+            yvec.end()
+        );
+        Student("", "", xvec);
     }
 }
 
@@ -95,7 +148,7 @@ std::istream& operator>>(std::istream &in, Student &student)
     return in;
 }
 
-void Student::readStudentName() //Read the first and last names with validity checks
+std::istream& Student::readStudentName(std::istream &in) //Read the first and last names with validity checks
 {
     std::string first = "", last = "";
     std::size_t ch;
@@ -110,11 +163,11 @@ void Student::readStudentName() //Read the first and last names with validity ch
     lastName = last;
 }
 
-void Student::readStudentGrades() //Reads students grades with validity checks, input stops when X inputted
+std::istream& Student::readStudentGrades(std::istream &in) //Reads students grades with validity checks, input stops when X inputted
 {
     std::cout << "Enter student grades:" << std::endl;
     std::string b;
-    while (std::cin >> b && b != "x" && b != "X")
+    while (in >> b && b != "x" && b != "X")
     {
         int c;
         try
@@ -132,12 +185,11 @@ void Student::readStudentGrades() //Reads students grades with validity checks, 
     }
 }
 
-void Student::readExamGrade() //Reads exam grade (the 1st one entered if entered more)
+std::istream& Student::readExamGrade(std::istream &in) //Reads exam grade (the 1st one entered if entered more)
 {
     std::string b;
     int c;
-    std::cout << "Enter student exam grade: ";
-    while (std::cin >> b)
+    while (in >> b)
     {
         try
         {
@@ -152,6 +204,8 @@ void Student::readExamGrade() //Reads exam grade (the 1st one entered if entered
         break;
     }
     examGrade = c;
+
+    return in;
 }
 
 double Student::getAverage() const //Returns the average of grades using the given formula

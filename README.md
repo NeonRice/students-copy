@@ -79,6 +79,8 @@ The smallest file size was with O1 and O2 flags, O3 larger by a small margin, wh
  <br />[v0.4](https://github.com/NeonRice/students/releases/tag/v0.4)
  <br />[v0.5](https://github.com/NeonRice/students/releases/tag/v0.5)
  <br />[v1.0](https://github.com/NeonRice/students/releases/tag/v1.0)
+ <br />[v1.1](https://github.com/NeonRice/students/releases/tag/v1.1)
+ <br />[v1.2](https://github.com/NeonRice/students/releases/tag/v1.2)
 
  ## Release Overview
  <br />**[v0.1]** Enter student info and grades, and get the overview of results displayed on the screen
@@ -93,4 +95,7 @@ The smallest file size was with O1 and O2 flags, O3 larger by a small margin, wh
  
  <br />**[v1.0]** Added 3 additional container seperation methods.
 
+ <br />**[v1.1]** Optimization with a compiler flag, refactoring.
+
+ <br />**[v1.2]** Rule of three, refactoring and Student class operators added.
   
