@@ -81,6 +81,7 @@ The smallest file size was with O1 and O2 flags, O3 larger by a small margin, wh
  <br />[v1.0](https://github.com/NeonRice/students-copy/releases/tag/v1.0)
  <br />[v1.1](https://github.com/NeonRice/students-copy/releases/tag/v1.1)
  <br />[v1.2](https://github.com/NeonRice/students-copy/releases/tag/v1.2)
+ <br />[v1.5](https://github.com/NeonRice/students-copy/releases/tag/v1.5)
 
  ## Release Overview
  <br />**[v0.1]** Enter student info and grades, and get the overview of results displayed on the screen
@@ -98,4 +99,6 @@ The smallest file size was with O1 and O2 flags, O3 larger by a small margin, wh
  <br />**[v1.1]** Optimization with a compiler flag, refactoring.
 
  <br />**[v1.2]** Rule of three, refactoring and Student class operators added.
+
+ <br />**[v1.5]** Abstract Human interface for Student class
   

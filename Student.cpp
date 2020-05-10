@@ -2,12 +2,12 @@
 #include "headers/Input.h"
 
 Student::Student() {}
-Student::Student(std::string fN, std::string lN) : firstName(fN), lastName(lN) {}
+Student::Student(std::string fN, std::string lN) : Human(fN, lN) {}
 Student::Student(double eX, std::vector<int> g) : examGrade(eX), grades(g) {}
 Student::Student(std::string fN, std::string lN, std::vector<int> g)
-    : firstName(fN), lastName(lN), grades(g) {}
+    : Human(fN, lN), grades(g) {}
 Student::Student(std::string fN, std::string lN, std::vector<int> g, int exG)
-    : firstName(fN), lastName(lN), grades(g), examGrade(exG) {}
+    : Human(fN, lN), grades(g), examGrade(exG) {}
 
 // Copy constructor
 Student::Student(const Student &other)
@@ -199,18 +199,15 @@ double Student::getMedian() const//Return the median of grades
     }
 }
 
+std::ostream& Student::printCredentials(std::ostream& out) const
+{
+    out << std::left << std::setw(20) << this->getFirstName() << std::left
+        << std::setw(20) << this->getLastName() << std::left << std::setw(8) << std::fixed
+        << std::setprecision(2) << this->getAverage() << this->getMedian();
+
+    return out;
+}
+
+
 // Return READ-ONLY vector of grades
 const std::vector<int>& Student::getGrades() const { return grades;} 
-
-
-
-//Friend function (Dont know how to make it into a friend template function)
-// void printStudentInfo(std::vector<Student> s, std::ostream &out) //Formatted output to console
-// {
-//     out << std::left << std::setw(20) << "Last Name" << std::left << std::setw(20) << "First Name" << std::left << std::setw(8) << "Average" <<  "Median" << std::endl;
-//     out << "---------------------------------------------------------------------------------------------------------------" << std::endl;
-//     for (size_t i = 0; i < s.size(); i++)
-//     {
-//         out << std::left << std::setw(20) << s[i].getLastName() << std::left << std::setw(20) << s[i].getFirstName() <<  std::left << std::setw(8) << std::fixed << std::setprecision(2) << s[i].getAverage() << s[i].getMedian() << std::endl;
-//     }
-// }

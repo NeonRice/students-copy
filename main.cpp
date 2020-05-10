@@ -6,10 +6,8 @@ const std::string OUT_FILE_NAME = "studentsOutput.txt";
 
 int main()
 {
-    Student s("Zanas", "Kovaliovas");
-    Student temp = s;
-    std::cout << temp.getFirstName() << std::endl;
     std::vector<Student> students;
+    
     bool readFromFile = yesOrNo("Read from file students.txt? (Y OR N): ");
     if (readFromFile)
         students = readStudentsFromFile<std::vector<Student>>();

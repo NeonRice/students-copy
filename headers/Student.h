@@ -5,13 +5,13 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#include <set>
-#include <tuple>
 
-class Student
+#include "Human.h"
+
+
+class Student : public Human
 {
 private:
-    std::string firstName, lastName;
     int examGrade = 0;
     std::vector<int> grades = {};
 
@@ -32,6 +32,7 @@ public:
     Student& operator+=(const Student &);
 
     bool operator==(const Student&) const;
+    inline bool operator!=(const Student &other) const { return *this == other ? false : true; }
     inline bool operator>=(const Student &other) const { return this->getAverage() >= other.getAverage(); }
     inline bool operator<=(const Student &other) const { return this->getAverage() <= other.getAverage(); }
     inline bool operator>(const Student &other) const { return this->getAverage() > other.getAverage(); }
@@ -40,11 +41,7 @@ public:
     friend std::ostream& operator<<(std::ostream &, const Student &student);
     friend std::istream& operator>>(std::istream &, Student &student);
 
-    inline std::string getFirstName() const { return firstName; }
-    inline std::string getLastName() const { return lastName; }
-    inline std::string getFullName() const { return firstName + " " + lastName; }
-
-    //friend void printStudentInfo(std::vector<Student> s, std::ostream &out); Don't know for now how to make it into a friend template func
+    std::ostream& printCredentials(std::ostream& s) const; 
 
     std::istream& readStudentName(std::istream &in = std::cin); //Read the first and last names with validity checks
 
@@ -58,6 +55,4 @@ public:
 
     const std::vector<int>& getGrades() const;
 };
-
-//void printStudentInfo(std::vector<Student> s, std::ostream &out);
 
