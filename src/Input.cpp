@@ -1,4 +1,4 @@
-#include "headers/Input.h"
+#include "../headers/Input.h"
 #include <chrono>
 
 //Utility Functions
@@ -22,4 +22,3 @@ bool yesOrNo(const std::string &instruction)
         }
     }
 }
-

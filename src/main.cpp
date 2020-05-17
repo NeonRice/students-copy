@@ -1,6 +1,6 @@
-#include "headers/Input.h"
-#include "headers/Output.h"
-#include "headers/Student.h"
+#include "../headers/Input.h"
+#include "../headers/Output.h"
+#include "../headers/Student.h"
 
 const std::string OUT_FILE_NAME = "studentsOutput.txt";
 

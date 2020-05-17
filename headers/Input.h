@@ -15,15 +15,22 @@
 #include <type_traits>
 #include <list>
 
-const int MAX_GRADES = 30; //Max amount of grades
+//! Max amount of grades
+const int MAX_GRADES = 30;
 
+//! File Name to read from
 const std::string FILE_NAME = "students.txt";
 
+//! Utility function for getting Y / N input from user
 bool yesOrNo(const std::string &);
 
+//! Utiltiy function for comparing two Students by lastName
 inline bool compareByLastName(const Student &a, const Student &b)
-    {return a.getLastName() < b.getLastName();}
+{
+    return a.getLastName() < b.getLastName();
+}
 
+//! Template function for human input receiving, returns created Student container
 template <typename Container>
 Container readStudents() //Basically all the start-input logic is handled in this function
 {
@@ -74,8 +81,10 @@ Container readStudents() //Basically all the start-input logic is handled in thi
     return students;
 }
 
+/** Function to read Student info from file into a Student container
+ *  that it then returns. */
 template <typename Container>
-Container readStudentsFromFile(std::string fileName = "students.txt", bool sortByName = true) //  Function to read from file
+Container readStudentsFromFile(std::string fileName = FILE_NAME, bool sortByName = true)
 {
     std::ifstream s(fileName); //FILE_NAME - const string defined in Input.h
     std::string str, dummy;
@@ -106,17 +115,18 @@ Container readStudentsFromFile(std::string fileName = "students.txt", bool sortB
 
                 students.push_back(Student(firstName, lastName, grades, examGrade));
             }
-            if(sortByName)
+            if (sortByName)
             {
                 if constexpr (std::is_same_v<Container, std::list<Student>>)
                     students.sort(compareByLastName);
                 else
-                    std::sort(students.begin(), students.end(), compareByLastName); //Sorting students by their last name
+                    std::sort(students.begin(), students.end(), compareByLastName);
             }
-            s.close();                                                      //Closing the stream after the operations
+            s.close(); //Closing the stream after the operations
         }
         else
-            throw std::runtime_error(std::string("The file students.txt wasn't found... Redirecting to input by hand.."));
+            throw std::runtime_error(
+                std::string("The file students.txt wasn't found... Redirecting to input by hand.."));
     }
     catch (const std::exception &e)
     {
@@ -126,5 +136,3 @@ Container readStudentsFromFile(std::string fileName = "students.txt", bool sortB
 
     return students;
 }
-
-

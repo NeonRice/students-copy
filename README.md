@@ -82,9 +82,11 @@ The smallest file size was with O1 and O2 flags, O3 larger by a small margin, wh
  <br />[v1.1](https://github.com/NeonRice/students-copy/releases/tag/v1.1)
  <br />[v1.2](https://github.com/NeonRice/students-copy/releases/tag/v1.2)
  <br />[v1.5](https://github.com/NeonRice/students-copy/releases/tag/v1.5)
+ <br />[v2.0](https://github.com/NeonRice/students-copy/releases/tag/v2.0)
+
 
  ## Release Overview
- <br />**[v0.1]** Enter student info and grades, and get the overview of results displayed on the screen
+ <br />**[[v0.1]](https://github.com/NeonRice/students-copy/releases/tag/v0.1) ** Enter student info and grades, and get the overview of results displayed on the screen
  
  <br />**[v0.2]** Added input from file and output sorting functionality. Program compilation is now done through a MAKEFILE.
  

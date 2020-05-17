@@ -1,5 +1,5 @@
-#include "headers/Student.h"
-#include "headers/Input.h"
+#include "../headers/Student.h"
+#include "../headers/Input.h"
 
 Student::Student() {}
 Student::Student(std::string fN, std::string lN) : Human(fN, lN) {}
@@ -19,7 +19,7 @@ Student::Student(const Student &other)
 }
 
 // Operator overloading
-Student& Student::operator=(const Student &other)
+Student &Student::operator=(const Student &other)
 {
     if (this != &other)
     {
@@ -34,33 +34,35 @@ Student& Student::operator=(const Student &other)
 
 bool Student::operator==(const Student &other) const
 {
-    if(grades.size() == other.grades.size())
+    if (grades.size() == other.grades.size())
     {
         auto it2 = other.grades.begin();
-        for(auto it = grades.begin(); it != grades.end(); ++it, ++it2)
+        for (auto it = grades.begin(); it != grades.end(); ++it, ++it2)
         {
-            if(*it != *it2)
+            if (*it != *it2)
                 return false;
         }
     }
     else
         return false;
-    if(firstName == other.firstName && lastName == other.lastName && examGrade == other.examGrade)
+    if (firstName == other.firstName && 
+        lastName == other.lastName && 
+        examGrade == other.examGrade)
         return true;
-    else return false;
+    else
+        return false;
 }
 
 Student Student::operator+(const Student &other) const
 {
-    if(this->getFullName() == other.getFullName())
+    if (this->getFullName() == other.getFullName())
     {
         Student student(*this);
         student.grades.insert(
             student.grades.end(),
             other.grades.begin(),
-            other.grades.end()
-        );
-        
+            other.grades.end());
+
         return student;
     }
     return *this;
@@ -68,32 +70,31 @@ Student Student::operator+(const Student &other) const
 
 Student Student::operator-(const Student &other) const
 {
-    if(this->getFullName() == other.getFullName())
+    if (this->getFullName() == other.getFullName())
     {
         std::vector<int> difference;
         std::vector<int> v1 = this->grades;
         std::vector<int> v2 = other.grades;
 
-        std::set_difference(v1.begin(), v1.end(), v2.begin(), v2.end(), 
+        std::set_difference(v1.begin(), v1.end(), v2.begin(), v2.end(),
                             std::inserter(difference, difference.begin()));
-                            
+
         return Student("----", "----", difference);
     }
     return *this;
 }
 
-Student& Student::operator+=(const Student &other)
+Student &Student::operator+=(const Student &other)
 {
     this->grades.insert(
-            this->grades.end(),
-            other.grades.begin(),
-            other.grades.end()
-        );
+        this->grades.end(),
+        other.grades.begin(),
+        other.grades.end());
 
     return *this;
 }
 
-std::ostream& operator<<(std::ostream &out, const Student &student)
+std::ostream &operator<<(std::ostream &out, const Student &student)
 {
     out << std::left << std::setw(20) << student.getFirstName() << std::left
         << std::setw(20) << student.getLastName() << std::left << std::setw(8) << std::fixed
@@ -102,14 +103,14 @@ std::ostream& operator<<(std::ostream &out, const Student &student)
     return out;
 }
 
-std::istream& operator>>(std::istream &in, Student &student)
+std::istream &operator>>(std::istream &in, Student &student)
 {
     in >> student.firstName >> student.lastName;
 
     return in;
 }
 
-std::istream& Student::readStudentName(std::istream &in) //Read the first and last names with validity checks
+std::istream &Student::readStudentName(std::istream &in)
 {
     std::string first = "", last = "";
     std::size_t ch;
@@ -122,9 +123,11 @@ std::istream& Student::readStudentName(std::istream &in) //Read the first and la
     } while (ch != std::string::npos);
     firstName = first;
     lastName = last;
+
+    return in;
 }
 
-std::istream& Student::readStudentGrades(std::istream &in) //Reads students grades with validity checks, input stops when X inputted
+std::istream &Student::readStudentGrades(std::istream &in)
 {
     std::cout << "Enter student grades:" << std::endl;
     std::string b;
@@ -144,9 +147,11 @@ std::istream& Student::readStudentGrades(std::istream &in) //Reads students grad
             continue;
         grades.push_back(c);
     }
+    
+    return in;
 }
 
-std::istream& Student::readExamGrade(std::istream &in) //Reads exam grade (the 1st one entered if entered more)
+std::istream &Student::readExamGrade(std::istream &in)
 {
     std::string b;
     int c;
@@ -169,7 +174,7 @@ std::istream& Student::readExamGrade(std::istream &in) //Reads exam grade (the 1
     return in;
 }
 
-double Student::getAverage() const //Returns the average of grades using the given formula
+double Student::getAverage() const
 {
     if (grades.size() == 0)
         return 0;
@@ -182,24 +187,25 @@ double Student::getAverage() const //Returns the average of grades using the giv
     return (double)(gradeSum / grades.size()) * 0.4 + 0.6 * (double)examGrade;
 }
 
-double Student::getMedian() const//Return the median of grades
+double Student::getMedian() const
 {
     std::vector<int> grade_copy = grades;
     if (grades.size() == 0)
         return 0;
-    
+
     std::sort(grade_copy.begin(), grade_copy.end());
     if (grade_copy.size() % 2)
     {
-        return ((double)grade_copy[grade_copy.size() / 2] + grade_copy[(grade_copy.size() / 2) - 1]) / 2;
+        return grade_copy[grade_copy.size() / 2];
     }
     else
     {
-        return grade_copy[grade_copy.size() / 2];
+        return ((double)grade_copy[grade_copy.size() / 2] 
+        + grade_copy[(grade_copy.size() / 2) - 1]) / 2;
     }
 }
 
-std::ostream& Student::printCredentials(std::ostream& out) const
+std::ostream &Student::printCredentials(std::ostream &out) const
 {
     out << std::left << std::setw(20) << this->getFirstName() << std::left
         << std::setw(20) << this->getLastName() << std::left << std::setw(8) << std::fixed
@@ -208,6 +214,5 @@ std::ostream& Student::printCredentials(std::ostream& out) const
     return out;
 }
 
-
 // Return READ-ONLY vector of grades
-const std::vector<int>& Student::getGrades() const { return grades;} 
+const std::vector<int> &Student::getGrades() const { return grades; }
