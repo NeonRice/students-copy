@@ -19,6 +19,7 @@ Prints given student info such as first name, last name, average of grades and a
 3. Running tests:
     1. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List, a for all).
     2. If you want to run the test suites in Google Unit Test framework run "./test t"
+    <br /><b> Warning! You can only run unit tests if you have gtest installed locally </b>
 4. OPTIONAL If you want to remove the created text files and the binary file test run "make testclean"
 
 ## Test results using different STL container types
