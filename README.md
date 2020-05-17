@@ -16,8 +16,10 @@ Prints given student info such as first name, last name, average of grades and a
 
 1. Download the source if you haven't already.
 2. Compile the project using the MAKEFILE provided. (Using "make test")
-3. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List, a for all). If you want to run all of the test suites run "./test t"
-4. OPTIONAL If you want to remove the created text files run "make testclean"
+3. Running tests:
+    1. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List, a for all).
+    2. If you want to run the test suites in Google Unit Test framework run "./test t"
+4. OPTIONAL If you want to remove the created text files and the binary file test run "make testclean"
 
 ## Test results using different STL container types
 <br />These were done on a system configured with 8GB of RAM and a modern i5 Intel processor. The data was written into a regular user HDD.
