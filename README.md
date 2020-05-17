@@ -16,7 +16,7 @@ Prints given student info such as first name, last name, average of grades and a
 
 1. Download the source if you haven't already.
 2. Compile the project using the MAKEFILE provided. (Using "make test")
-3. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List or a for all)
+3. Run the compiled binary file in the terminal of your choice using "./test CONTAINER_TYPE" (You must provide a container type such as v for vector, d for deque, l for List, a for all). If you want to run all of the test suites run "./test t"
 4. OPTIONAL If you want to remove the created text files run "make testclean"
 
 ## Test results using different STL container types
@@ -71,36 +71,24 @@ The container used for the test was vector.
 
 The smallest file size was with O1 and O2 flags, O3 larger by a small margin, while O0 file size was almost double the size of O1 and O2. The execution time differences between the three optimization flags were of seconds, therefore O2 is probably the best choice based on it's file size and execution time.
 
-
-## Releases
- [v0.1](https://github.com/NeonRice/students-copy/releases/tag/v0.1) 
- <br />[v0.2](https://github.com/NeonRice/students-copy/releases/tag/v0.2)
- <br />[v0.3](https://github.com/NeonRice/students-copy/releases/tag/v0.3)
- <br />[v0.4](https://github.com/NeonRice/students-copy/releases/tag/v0.4)
- <br />[v0.5](https://github.com/NeonRice/students-copy/releases/tag/v0.5)
- <br />[v1.0](https://github.com/NeonRice/students-copy/releases/tag/v1.0)
- <br />[v1.1](https://github.com/NeonRice/students-copy/releases/tag/v1.1)
- <br />[v1.2](https://github.com/NeonRice/students-copy/releases/tag/v1.2)
- <br />[v1.5](https://github.com/NeonRice/students-copy/releases/tag/v1.5)
- <br />[v2.0](https://github.com/NeonRice/students-copy/releases/tag/v2.0)
-
-
  ## Release Overview
- <br />**[[v0.1]](https://github.com/NeonRice/students-copy/releases/tag/v0.1) ** Enter student info and grades, and get the overview of results displayed on the screen
+ <br />[**[v2.0]**](https://github.com/NeonRice/students-copy/releases/tag/v2.0) Major refactoring, Google Test framework implementation, Doxygen documentation.
  
- <br />**[v0.2]** Added input from file and output sorting functionality. Program compilation is now done through a MAKEFILE.
- 
- <br />**[v0.3]** Added exception handling
- 
- <br />**[v0.4]** Test program added to measure vector container efficiency doing manipulative tasks with data.
- 
- <br />**[v0.5]** Deque and List added as container options to the testing program.
- 
- <br />**[v1.0]** Added 3 additional container seperation methods.
+ <br />[**[v1.5]**](https://github.com/NeonRice/students-copy/releases/tag/v1.5) Abstract Human interface for Student class
 
- <br />**[v1.1]** Optimization with a compiler flag, refactoring.
+ <br />[**[v1.2]**](https://github.com/NeonRice/students-copy/releases/tag/v1.2) Rule of three, refactoring and Student class operators added.
 
- <br />**[v1.2]** Rule of three, refactoring and Student class operators added.
+ <br />[**[v1.1]**](https://github.com/NeonRice/students-copy/releases/tag/v1.1) Optimization with a compiler flag, refactoring.
 
- <br />**[v1.5]** Abstract Human interface for Student class
+ <br />[**[v1.0]**](https://github.com/NeonRice/students-copy/releases/tag/v1.0) Added 3 additional container seperation methods.
+ 
+ <br />[**[v0.5]**](https://github.com/NeonRice/students-copy/releases/tag/v0.5) Deque and List added as container options to the testing program.
+ 
+ <br />[**[v0.4]**](https://github.com/NeonRice/students-copy/releases/tag/v0.4) Test program added to measure vector container efficiency doing manipulative tasks with data.
+ 
+ <br />[**[v0.3]**](https://github.com/NeonRice/students-copy/releases/tag/v0.3) Added exception handling
+ 
+ <br />[**[v0.2]**](https://github.com/NeonRice/students-copy/releases/tag/v0.2) Added input from file and output sorting functionality. Program compilation is now done through a MAKEFILE.
+ 
+ <br />[**[v0.1]**](https://github.com/NeonRice/students-copy/releases/tag/v0.1) Enter student info and grades, and get the overview of results displayed on the screen
   
