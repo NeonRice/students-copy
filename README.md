@@ -49,6 +49,47 @@ Prints given student info such as first name, last name, average of grades and a
 
 <br />In conclusion the differences in time of seperation are insignificant compared to the amount of memory that we save by using the 3rd method. If we were to use the 2nd method, vector is the clear winner, however using the 3rd method, the seperation time equals out with deque's, therefore the choice should be made between vector or deque for the seperation job solely.
 
+## Unit test result
+```shell 
+NeonRice:students-copy NeonRice$ ./test t
+[==========] Running 13 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 10 tests from StudentTest
+[ RUN      ] StudentTest.getNameTest
+[       OK ] StudentTest.getNameTest (1 ms)
+[ RUN      ] StudentTest.getBothNamesTest
+[       OK ] StudentTest.getBothNamesTest (0 ms)
+[ RUN      ] StudentTest.OperatorEqualsTest
+[       OK ] StudentTest.OperatorEqualsTest (0 ms)
+[ RUN      ] StudentTest.OperatorNotEqualsTest
+[       OK ] StudentTest.OperatorNotEqualsTest (0 ms)
+[ RUN      ] StudentTest.OperatorPlusEqualsTest
+[       OK ] StudentTest.OperatorPlusEqualsTest (0 ms)
+[ RUN      ] StudentTest.OperatorPlusTest
+[       OK ] StudentTest.OperatorPlusTest (0 ms)
+[ RUN      ] StudentTest.OperatorMinusTest
+[       OK ] StudentTest.OperatorMinusTest (0 ms)
+[ RUN      ] StudentTest.OperatorMinusTest2
+[       OK ] StudentTest.OperatorMinusTest2 (0 ms)
+[ RUN      ] StudentTest.OperatorGreaterThanTest
+[       OK ] StudentTest.OperatorGreaterThanTest (0 ms)
+[ RUN      ] StudentTest.getMedianTest
+[       OK ] StudentTest.getMedianTest (0 ms)
+[----------] 10 tests from StudentTest (1 ms total)
+
+[----------] 3 tests from UtilityTest
+[ RUN      ] UtilityTest.seperateContainersVectorTest
+[       OK ] UtilityTest.seperateContainersVectorTest (0 ms)
+[ RUN      ] UtilityTest.seperateContainersDequeTest
+[       OK ] UtilityTest.seperateContainersDequeTest (0 ms)
+[ RUN      ] UtilityTest.seperateContainersListTest
+[       OK ] UtilityTest.seperateContainersListTest (0 ms)
+[----------] 3 tests from UtilityTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 13 tests from 2 test suites ran. (1 ms total)
+[  PASSED  ] 13 tests.
+```
 ## Outdated Instructions (For Version v0.1)
 
 1. Compile the source name.cpp using your preffered C++ compiler. Example using GNU compiler: "g++ -o Students students.cpp"
