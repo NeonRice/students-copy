@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Student.h"
 
 // Comparison inline functions

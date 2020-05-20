@@ -1,6 +1,7 @@
 #include "../headers/ContainerTests.h"
 
 #include <gtest/gtest.h>
+#include <iostream>
 
 //! Numer of Students to start generating from
 const int GENERATION_START = 1000;
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        const std::vector<const int> config = { GENERATION_START, GENERATION_OFFSET, FILE_AMOUNT, GRADE_COUNT };
+        const std::vector<int> config = { GENERATION_START, GENERATION_OFFSET, FILE_AMOUNT, GRADE_COUNT };
 
         if (tolower(*argv[1]) == 'v')
             testVector(sort, config);
@@ -43,11 +44,14 @@ int main(int argc, char *argv[])
             testDeque(sort, config);
         else if (tolower(*argv[1]) == 'l')
             testList(sort, config);
+        // else if (tolower(*argv[1]) == 'r')
+        //     testRiceVector(sort, config);
         else if (tolower(*argv[1]) == 'a')
         {
             testVector(sort, config);
             testDeque(sort, config);
             testList(sort, config);
+            //testRiceVector(sort, config);
         }
         else if (tolower(*argv[1]) == 't')
         {

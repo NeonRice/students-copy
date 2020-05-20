@@ -1,19 +1,15 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <iterator>
-#include <limits>
-#include <algorithm>
-#include <iomanip>
-#include <random>
-#include <fstream>
 #include "Student.h"
-#include <stdexcept>
+#include "Utility.h"
+
+#include <string>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 #include <type_traits>
 #include <list>
+#include <vector>
 
 //! Max amount of grades
 const int MAX_GRADES = 30;
@@ -118,7 +114,9 @@ Container readStudentsFromFile(std::string fileName = FILE_NAME, bool sortByName
             if (sortByName)
             {
                 if constexpr (std::is_same_v<Container, std::list<Student>>)
+                {
                     students.sort(compareByLastName);
+                }
                 else
                     std::sort(students.begin(), students.end(), compareByLastName);
             }

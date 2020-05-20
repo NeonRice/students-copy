@@ -1,6 +1,11 @@
 #include "../headers/Student.h"
 #include "../headers/Input.h"
 
+#include <string>
+#include <vector>
+#include <iomanip>
+#include <iostream>
+
 Student::Student() {}
 Student::Student(std::string fN, std::string lN) : Human(fN, lN) {}
 Student::Student(double eX, std::vector<int> g) : examGrade(eX), grades(g) {}
